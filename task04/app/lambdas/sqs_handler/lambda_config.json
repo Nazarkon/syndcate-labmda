@@ -17,8 +17,9 @@
   "event_sources": [
     {
       "resource_type": "sqs_trigger",
-      "target_queue": "cmtr-5142af4e-async_queue-yj9w",
-      "batch_size": 10
+      "target_queue": "async_queue",
+      "batch_size": 10,
+      "region": "eu-west-1"
     }
   ],
   "env_variables": {},

@@ -8,15 +8,25 @@
   "memory": 128,
   "timeout": 100,
   "lambda_path": "lambdas/audit_producer",
-  "dependencies": [],
+  "dependencies": [
+    {
+      "resource_type": "dynamodb_table",
+      "resource_name": "Configuration"
+    }
+  ],
   "event_sources": [
     {
       "resource_type": "dynamodb_trigger",
-      "target_table": "arn:aws:dynamodb:eu-west-1:423623862923:table/cmtr-5142af4e-Configuration",
-      "batch_size": 1
+      "target_table": "cmtr-5142af4e-Configuration",
+      "target_stream": "cmtr-5142af4e-Configuration",
+      "starting_position": "LATEST",
+      "batch_size": 1,
+      "region": "eu-west-1"
     }
   ],
-  "env_variables": {},
+  "env_variables": {
+    "TARGET_TABEL": "${target_table}"
+  },
   "publish_version": true,
   "alias": "${lambdas_alias_name}",
   "url_config": {},

@@ -17,8 +17,8 @@
   "event_sources": [
     {
       "resource_type": "dynamodb_trigger",
-      "target_table": "cmtr-5142af4e-Configuration",
-      "target_stream": "cmtr-5142af4e-Configuration",
+      "target_table": "Configuration",
+      "target_stream": "Configuration",
       "starting_position": "LATEST",
       "batch_size": 1,
       "region": "eu-west-1"

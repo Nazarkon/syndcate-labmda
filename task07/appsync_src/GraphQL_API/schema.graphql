@@ -1,0 +1,32 @@
+# Define the root query and mutation operations for the API
+type Query {
+  getEvent(id: ID!): Event
+}
+
+type Mutation {
+  createEvent(userId: Int!, payLoad: AWSJSON!): EventMetadata
+}
+
+# Define the Event type for storing and querying events
+type Event {
+  id: ID!
+  userId: Int!
+  createdAt: AWSDateTime!
+  payLoad: PayLoad
+}
+
+# Define the metadata returned from createEvent
+type EventMetadata {
+  id: ID!
+  createdAt: AWSDateTime!
+}
+
+# Define the structure and type of the payload per the requirements
+type PayLoad {
+  meta: Meta
+}
+
+type Meta {
+  key1: Int
+  key2: String
+}

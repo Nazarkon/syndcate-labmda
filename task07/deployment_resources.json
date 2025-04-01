@@ -47,6 +47,23 @@
     "resource_type": "iam_policy",
     "tags": {}
   },
+  "app-sync-cloud-watch": {
+    "policy_content": {
+      "Statement": [
+        {
+          "Action": [
+              "logs:CreateLogStream",
+              "logs:PutLogEvents"
+          ],
+          "Effect": "Allow",
+          "Resource": "*"
+        }
+      ],
+      "Version": "2012-10-17"
+    },
+    "resource_type": "iam_policy",
+    "tags": {}
+  },
   "Events": {
     "resource_type": "dynamodb_table",
     "hash_key_name": "id",
@@ -62,7 +79,8 @@
     "principal_service": "appsync",
     "predefined_policies": [],
     "custom_policies": [
-     "app-sync-dynamodb"
+     "app-sync-dynamodb",
+     "app-sync-cloud-watch"
     ],
     "allowed_accounts": [],
     "instance_profile": false,

@@ -17,6 +17,6 @@
     "attributeValues": {
         "userId": $util.dynamodb.toDynamoDBJson($ctx.args.userId),
         "createdAt": $util.dynamodb.toDynamoDBJson($util.time.nowISO8601()),
-        "payLoad": $util.dynamodb.toDynamoDBJson($util.parseJson($ctx.args.payLoad))
+        "payLoad": $util.dynamodb.toDynamoDBJson($ctx.args.payLoad)
     }
 }

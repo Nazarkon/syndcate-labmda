@@ -8,7 +8,7 @@ exports.handler = async (event) => {
   
   try {
     
-    const timestamp = new Date().toISOString().replace(/[:.]/g, "-");
+    const timestamp = new Date().toISOString()
 
     const uuids = Array.from({ length: 10 }, () => uuidv4());
     
@@ -17,7 +17,7 @@ exports.handler = async (event) => {
     
     const params = {
       Bucket: process.env.BUCKET_NAME,
-      Key: `uuids-${timestamp}.txt`,
+      Key: `${timestamp}`,
       Body: fileContent,
       ContentType: "text/plain",
     };

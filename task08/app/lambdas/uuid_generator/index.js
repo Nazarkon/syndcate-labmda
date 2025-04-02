@@ -7,19 +7,23 @@ exports.handler = async (event) => {
   console.log('Event received:', JSON.stringify(event, null, 2));
   
   try {
+    const timestamp = new Date().toISOString();
     
-    const timestamp = new Date().toISOString()
-
+    
     const uuids = Array.from({ length: 10 }, () => uuidv4());
     
-    const fileContent = uuids.join("\n");
+   
+    const fileContent = JSON.stringify({
+      ids: uuids
+    });
+    
     console.log('BUCKET_NAME:', process.env.BUCKET_NAME);
     
     const params = {
       Bucket: process.env.BUCKET_NAME,
       Key: `${timestamp}`,
       Body: fileContent,
-      ContentType: "text/plain",
+      ContentType: "application/json" // Changed to JSON content type
     };
 
     const uploadResult = await s3.putObject(params).promise();
@@ -28,7 +32,7 @@ exports.handler = async (event) => {
       statusCode: 200,
       body: JSON.stringify({
         message: "UUIDs successfully generated and stored",
-        filename: `uuids-${timestamp}.txt`,
+        filename: timestamp,
         uuids: uuids,
       }),
     };
